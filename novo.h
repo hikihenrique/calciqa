@@ -100,7 +100,7 @@ double calcOxigenio(double Oxigenio, double bunda){
 	else{
 		q9=47.0;
 	}
-	return (q9 < 0) ? 0.1 : q6;
+	return q9;
 }
 
 double calcPH(double pH){
