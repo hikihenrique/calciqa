@@ -57,7 +57,7 @@ double btn_click (GtkButton *button, GObject *object_entry) {
     double q8 = strtod(get_data_entry8, NULL);
     double q9 = strtod(get_data_entry9, NULL);
 
-    double result = iqa(q1, q2, q3, q4, q5, q6, q7, q8, q9);
+    double result = iqa(q1, q2, q3, q4, q5, q6, q7, q9, q8);
     printf("%.5lf\n", result);
 
     if(result <= 100 && result > 90) {
