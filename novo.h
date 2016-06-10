@@ -13,12 +13,12 @@ double calcColiformes(double CF){
 	else{
 		q1 = 3.0;
 	}
-	
+
 	return q1;
 }
 
 double calcDBO(double DBO){
-	
+
 	double q3;
 
 	if(DBO <= 30){
@@ -27,7 +27,7 @@ double calcDBO(double DBO){
 	else{
 		q3 = 30.0;
 	}
-	
+
 	return q3;
 }
 
@@ -51,14 +51,14 @@ double calcFt (double FT){
 
 		q5 = 5;
 	}
-	
+
 	return q5;
 }
 
 double calcNT(double NT)
 {
 	double q4;
-	
+
 	if(NT <= 10){
 		q4= -5.1 * NT + 100.17;
 	}
@@ -81,7 +81,7 @@ double calcOxigenio(double Oxigenio, double bunda){
 	double cs = (14.2 * pow(e,-0.0212 * bunda) - (0.0016 * 9.09 * pow(e, -0.0264 * bunda))) * (0.994 - (0.0001042 * 852));
 
 	double od = (Oxigenio / cs) * 100;
-	
+
 	printf("temperatura: %lf\n", bunda);
 
 	if(od <= 100){
@@ -90,7 +90,7 @@ double calcOxigenio(double Oxigenio, double bunda){
 		double y3 = (PI / 85) - (od - 15);
 		double y4 = (od - 65) / 10;
 		double y5 = (65 - od) / 10;
- 
+
 		q9 = 100 * pow(sin(y1),2) - ((2.5 * sin(y2) - 0.018 * od + 6.86) * sin(y3)) + (12 / (pow(e, y4) + pow(e, y5)));
 
 	}
@@ -111,13 +111,13 @@ double calcPH(double pH){
 		q2 = 2;
 	}
 	else if(pH <= 6.9){
-		q2 = -37.1085 + 41.91277 * pH - 15.7043 * pow(pH, 2) + 2.417486 * pow(pH, 3) - 0.091252 * pow(pH, 4);	
+		q2 = -37.1085 + 41.91277 * pH - 15.7043 * pow(pH, 2) + 2.417486 * pow(pH, 3) - 0.091252 * pow(pH, 4);
 	}
 	else if(pH <= 7.1){
-		q2 = -4.69365 - (21.4593 * pH) - (68.4561 * pow(pH,2)) + (21.638886 * pow(pH,3)) - (1.59165 * pow(pH,4));	
+		q2 = -4.69365 - (21.4593 * pH) - (68.4561 * pow(pH,2)) + (21.638886 * pow(pH,3)) - (1.59165 * pow(pH,4));
 	}
 	else if(pH <= 12){
-		q2 = -7698.19 + 3262.031 * pH - 499.494 * pow(pH,2) + 33.1551 * pow(pH,3) - 0.810613 * pow(pH,4);	
+		q2 = -7698.19 + 3262.031 * pH - 499.494 * pow(pH,2) + 33.1551 * pow(pH,3) - 0.810613 * pow(pH,4);
 	}
 	else{
 		q2 = 3.0;
@@ -126,7 +126,7 @@ double calcPH(double pH){
 }
 
 double calcST (double ST){
-	
+
 	double q8;
 
 	if(ST <= 500){
@@ -156,47 +156,47 @@ double calcTu (double TU){
 
 int iqa(double q1, double q2, double q3, double q4, double q5, double q6, double q7, double q8, double q9){
  	double temperatura,iqa;
- 	
- 	
+
+
  	temperatura = q6;
-	
+
 
  	q1 = calcColiformes(q1);
  	printf("q1: %lf\n", q1);
 
- 	
+
  	q2 = calcPH(q2);
  	printf("q2: %lf\n", q2);
 
- 	
+
  	q3 = calcDBO(q3);
  	printf("q3: %lf\n", q3);
 
- 	
+
  	q4 = calcNT(q4);
  	printf("q4: %lf\n", q4);
 
- 	
+
  	q5 = calcFt(q5);
  	printf("q5: %lf\n", q5);
 
- 	
+
  	q6 = calcDt(q6);
  	printf("q6: %lf\n", q6);
 
   	q7 = calcTu(q7);
  	printf("q7: %lf\n", q7);
- 	
+
  	q8 = calcOxigenio(q8, temperatura);
  	printf("q8: %lf\n", q8);
-	
+
  	q9 = calcST(q9);
  	printf("q9: %lf\n", q9);
 
  	iqa = (pow(q1,0.15) * pow(q2,0.12) * pow(q3,0.10) * pow(q4,0.10) * pow(q5,0.10) * pow(q6,0.10) * pow(q7,0.08) * pow(q8,0.17) * pow(q9,0.08));
  	printf("IQA: %.10lf\n",iqa);
 
- 	if(iqa <= 100 && iqa > 90)
+	if(iqa <= 100 && iqa > 90)
  		printf("Nível de Qualidade: Excelente\n");
  	else if(iqa <= 90 && iqa > 70)
  		printf("Nível de Qualidade: Bom\n");
@@ -208,6 +208,5 @@ int iqa(double q1, double q2, double q3, double q4, double q5, double q6, double
  		printf("Nível de Qualidade: Muito Ruim\n");
 
  	return iqa;
- 	
-}
 
+}

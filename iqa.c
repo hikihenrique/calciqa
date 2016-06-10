@@ -35,6 +35,7 @@ double btn_click (GtkButton *button, GObject *object_entry) {
     GtkEntry *data_entry7 = g_object_get_data (object_entry, "entry7");
     GtkEntry *data_entry8 = g_object_get_data (object_entry, "entry8");
     GtkEntry *data_entry9 = g_object_get_data (object_entry, "entry9");
+    GtkLabel *result_iqa = g_object_get_data (object_entry, "resultLabel");
 
     const char *get_data_entry1 = gtk_entry_get_text (data_entry1);
     const char *get_data_entry2 = gtk_entry_get_text (data_entry2);
@@ -46,17 +47,40 @@ double btn_click (GtkButton *button, GObject *object_entry) {
     const char *get_data_entry8 = gtk_entry_get_text (data_entry8);
     const char *get_data_entry9 = gtk_entry_get_text (data_entry9);
 
-    double q1 = atof(get_data_entry1);
-    double q2 = atof(get_data_entry2);
-    double q3 = atof(get_data_entry3);
-    double q4 = atof(get_data_entry4);
-    double q5 = atof(get_data_entry5);
-    double q6 = atof(get_data_entry6);
-    double q7 = atof(get_data_entry7);
-    double q8 = atof(get_data_entry8);
-    double q9 = atof(get_data_entry9);
-    
+    double q1 = strtod(get_data_entry1, NULL);
+    double q2 = strtod(get_data_entry2, NULL);
+    double q3 = strtod(get_data_entry3, NULL);
+    double q4 = strtod(get_data_entry4, NULL);
+    double q5 = strtod(get_data_entry5, NULL);
+    double q6 = strtod(get_data_entry6, NULL);
+    double q7 = strtod(get_data_entry7, NULL);
+    double q8 = strtod(get_data_entry8, NULL);
+    double q9 = strtod(get_data_entry9, NULL);
+
     double result = iqa(q1, q2, q3, q4, q5, q6, q7, q8, q9);
+    printf("%.5lf\n", result);
+
+    if(result <= 100 && result > 90) {
+        char *str = g_strdup_printf("IQA: %.5lf\n ível de Qualidade: Excelente \n", result);
+        gtk_label_set_text(GTK_LABEL(result_iqa), str);
+        g_free(str);
+    } else if(result <= 90 && result > 70) {
+        char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Bom \n", result);
+        gtk_label_set_text(GTK_LABEL(result_iqa), str);
+        g_free(str);
+    } else if(result <= 70 && result > 50) {
+        char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Médio \n", result);
+        gtk_label_set_text(GTK_LABEL(result_iqa), str);
+        g_free(str);
+    } else if(result <= 50 && result > 25) {
+        char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Ruim \n", result);
+        gtk_label_set_text(GTK_LABEL(result_iqa), str);
+        g_free(str);
+    } else if(result <= 25 && result >= 0) {
+        char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Muito Ruim \n", result);
+        gtk_label_set_text(GTK_LABEL(result_iqa), str);
+        g_free(str);
+    }
 
     return result;
 }
@@ -88,6 +112,8 @@ int main(int argc, char *argv[])
     label8 = gtk_label_new("Solidos totais mg/L");
     label9 = gtk_label_new("OD (%% saturacao)");
     spcLabel = gtk_label_new("");
+    resultLabel = gtk_label_new("");
+    qLabel = gtk_label_new("");
 
     //Entry
     entry1 = gtk_entry_new();
@@ -111,6 +137,7 @@ int main(int argc, char *argv[])
     g_object_set_data(G_OBJECT(button), "entry7", entry7);
     g_object_set_data(G_OBJECT(button), "entry8", entry8);
     g_object_set_data(G_OBJECT(button), "entry9", entry9);
+    g_object_set_data(G_OBJECT(button), "resultLabel", resultLabel);
     g_signal_connect(GTK_BUTTON(button), "clicked", G_CALLBACK(btn_click), button);
 
     //Button Reset
@@ -151,6 +178,7 @@ int main(int argc, char *argv[])
     gtk_grid_attach(GTK_GRID(grid), entry9, 2, 8, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), button, 2, 9, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), buttonReset, 1, 9, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), resultLabel, 1, 10, 1, 1);
 
     gtk_container_add(GTK_CONTAINER(window), grid);
     gtk_widget_show_all(window);
