@@ -75,14 +75,14 @@ double calcNT(double NT)
 	return q4;
 }
 
-double calcOxigenio(double Oxigenio, double bunda){
+double calcOxigenio(double Oxigenio, double dt){
 
 	double q9;
-	double cs = (14.2 * pow(e,-0.0212 * bunda) - (0.0016 * 9.09 * pow(e, -0.0264 * bunda))) * (0.994 - (0.0001042 * 852));
+	double cs = (14.2 * pow(e,-0.0212 * dt) - (0.0016 * 9.09 * pow(e, -0.0264 * dt))) * (0.994 - (0.0001042 * 852));
 
 	double od = (Oxigenio / cs) * 100;
 
-	printf("temperatura: %lf\n", bunda);
+	printf("temperatura: %lf\n", dt);
 
 	if(od <= 100){
 		double y1 = 0.01396 * od + 0.0873;

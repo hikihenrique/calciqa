@@ -37,31 +37,23 @@ double btn_click (GtkButton *button, GObject *object_entry) {
     GtkEntry *data_entry9 = g_object_get_data (object_entry, "entry9");
     GtkLabel *result_iqa = g_object_get_data (object_entry, "resultLabel");
 
-    const char *get_data_entry1 = gtk_entry_get_text (data_entry1);
-    const char *get_data_entry2 = gtk_entry_get_text (data_entry2);
-    const char *get_data_entry3 = gtk_entry_get_text (data_entry3);
-    const char *get_data_entry4 = gtk_entry_get_text (data_entry4);
-    const char *get_data_entry5 = gtk_entry_get_text (data_entry5);
-    const char *get_data_entry6 = gtk_entry_get_text (data_entry6);
-    const char *get_data_entry7 = gtk_entry_get_text (data_entry7);
-    const char *get_data_entry8 = gtk_entry_get_text (data_entry8);
-    const char *get_data_entry9 = gtk_entry_get_text (data_entry9);
-
-    double q1 = strtod(get_data_entry1, NULL);
-    double q2 = strtod(get_data_entry2, NULL);
-    double q3 = strtod(get_data_entry3, NULL);
-    double q4 = strtod(get_data_entry4, NULL);
-    double q5 = strtod(get_data_entry5, NULL);
-    double q6 = strtod(get_data_entry6, NULL);
-    double q7 = strtod(get_data_entry7, NULL);
-    double q8 = strtod(get_data_entry8, NULL);
-    double q9 = strtod(get_data_entry9, NULL);
+    double q1 = atof(gtk_entry_get_text(data_entry1));
+    double q2 = atof(gtk_entry_get_text(data_entry2));
+    double q3 = atof(gtk_entry_get_text(data_entry3));
+    double q4 = atof(gtk_entry_get_text(data_entry4));
+    double q5 = atof(gtk_entry_get_text(data_entry5));
+    double q6 = atof(gtk_entry_get_text(data_entry6));
+    double q7 = atof(gtk_entry_get_text(data_entry7));
+    double q8 = atof(gtk_entry_get_text(data_entry8));
+    double q9 = atof(gtk_entry_get_text(data_entry9));
 
     double result = iqa(q1, q2, q3, q4, q5, q6, q7, q9, q8);
     printf("%.5lf\n", result);
 
+    // O problema das casas decimais esta na maneira que estamos imprimindo o resultado na interface.
+
     if(result <= 100 && result > 90) {
-        char *str = g_strdup_printf("IQA: %.5lf\n ível de Qualidade: Excelente \n", result);
+        char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Excelente \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
     } else if(result <= 90 && result > 70) {
