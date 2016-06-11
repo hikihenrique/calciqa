@@ -48,9 +48,8 @@ double btn_click (GtkButton *button, GObject *object_entry) {
     double q9 = atof(gtk_entry_get_text(data_entry9));
 
     double result = iqa(q1, q2, q3, q4, q5, q6, q7, q9, q8);
-    printf("%.5lf\n", result);
+    printf("%.15lf\n", result);
 
-    // O problema das casas decimais esta na maneira que estamos imprimindo o resultado na interface.
 
     if(result <= 100 && result > 90) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Excelente \n", result);
@@ -73,8 +72,6 @@ double btn_click (GtkButton *button, GObject *object_entry) {
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
     }
-
-    return result;
 }
 
 int main(int argc, char *argv[])

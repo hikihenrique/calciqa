@@ -154,7 +154,7 @@ double calcTu (double TU){
 
 }
 
-int iqa(double q1, double q2, double q3, double q4, double q5, double q6, double q7, double q8, double q9){
+double iqa(double q1, double q2, double q3, double q4, double q5, double q6, double q7, double q8, double q9){
  	double temperatura,iqa;
 
 
@@ -195,7 +195,7 @@ int iqa(double q1, double q2, double q3, double q4, double q5, double q6, double
 
  	iqa = (pow(q1,0.15) * pow(q2,0.12) * pow(q3,0.10) * pow(q4,0.10) * pow(q5,0.10) * pow(q6,0.10) * pow(q7,0.08) * pow(q8,0.17) * pow(q9,0.08));
  	printf("IQA: %.10lf\n",iqa);
-
+	/*
 	if(iqa <= 100 && iqa > 90)
  		printf("Nível de Qualidade: Excelente\n");
  	else if(iqa <= 90 && iqa > 70)
@@ -205,8 +205,7 @@ int iqa(double q1, double q2, double q3, double q4, double q5, double q6, double
  	else if(iqa <= 50 && iqa > 25)
  		printf("Nível de Qualidade: Ruim\n");
  	else if(iqa <= 25 && iqa >= 0)
- 		printf("Nível de Qualidade: Muito Ruim\n");
+ 		printf("Nível de Qualidade: Muito Ruim\n");*/
 
  	return iqa;
-
 }
