@@ -154,32 +154,25 @@ double calcTu (double TU){
 
 }
 
-double iqa(double q1, double q2, double q3, double q4, double q5, double q6, double q7, double q8, double q9){
+double iqa(double q1, double q2, double q3, double q4, double q5, double q6, double q7, double q8, double q9, double peso1, double peso2, double peso3, double peso4, double peso5, double peso6, double peso7, double peso8, double peso9) {
  	double temperatura,iqa;
-
-
  	temperatura = q6;
 
 
  	q1 = calcColiformes(q1);
  	printf("q1: %lf\n", q1);
 
-
  	q2 = calcPH(q2);
  	printf("q2: %lf\n", q2);
-
 
  	q3 = calcDBO(q3);
  	printf("q3: %lf\n", q3);
 
-
  	q4 = calcNT(q4);
  	printf("q4: %lf\n", q4);
 
-
  	q5 = calcFt(q5);
  	printf("q5: %lf\n", q5);
-
 
  	q6 = calcDt(q6);
  	printf("q6: %lf\n", q6);
@@ -193,7 +186,7 @@ double iqa(double q1, double q2, double q3, double q4, double q5, double q6, dou
  	q9 = calcST(q9);
  	printf("q9: %lf\n", q9);
 
- 	iqa = (pow(q1,0.15) * pow(q2,0.12) * pow(q3,0.10) * pow(q4,0.10) * pow(q5,0.10) * pow(q6,0.10) * pow(q7,0.08) * pow(q8,0.17) * pow(q9,0.08));
+ 	iqa = (pow(q1,peso1) * pow(q2,peso2) * pow(q3,peso3) * pow(q4,peso4) * pow(q5,peso5) * pow(q6,peso6) * pow(q7,peso7) * pow(q8,peso8) * pow(q9,peso9));
  	printf("IQA: %.10lf\n",iqa);
 	/*
 	if(iqa <= 100 && iqa > 90)
