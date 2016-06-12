@@ -24,7 +24,7 @@ void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     gtk_entry_set_text(GTK_ENTRY(data_entry9), "");
 }
 
-double btn_click (GtkButton *button, GObject *object_entry) {
+void btn_click (GtkButton *button, GObject *object_entry) {
 
     GtkEntry *data_entry1 = g_object_get_data (object_entry, "entry1");
     GtkEntry *data_entry2 = g_object_get_data (object_entry, "entry2");
