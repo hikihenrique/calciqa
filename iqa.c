@@ -1,6 +1,137 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "novo.h"
+
+void entry_save(GtkButton *buttonSave, GObject *object_entry){
+
+
+    GtkEntry *data_entry1 = g_object_get_data (object_entry, "entry1");
+    GtkEntry *data_entry2 = g_object_get_data (object_entry, "entry2");
+    GtkEntry *data_entry3 = g_object_get_data (object_entry, "entry3");
+    GtkEntry *data_entry4 = g_object_get_data (object_entry, "entry4");
+    GtkEntry *data_entry5 = g_object_get_data (object_entry, "entry5");
+    GtkEntry *data_entry6 = g_object_get_data (object_entry, "entry6");
+    GtkEntry *data_entry7 = g_object_get_data (object_entry, "entry7");
+    GtkEntry *data_entry8 = g_object_get_data (object_entry, "entry8");
+    GtkEntry *data_entry9 = g_object_get_data (object_entry, "entry9");
+    GtkEntry *data_entryPeso1 = g_object_get_data (object_entry, "entryPeso1");
+    GtkEntry *data_entryPeso2 = g_object_get_data (object_entry, "entryPeso2");
+    GtkEntry *data_entryPeso3 = g_object_get_data (object_entry, "entryPeso3");
+    GtkEntry *data_entryPeso4 = g_object_get_data (object_entry, "entryPeso4");
+    GtkEntry *data_entryPeso5 = g_object_get_data (object_entry, "entryPeso5");
+    GtkEntry *data_entryPeso6 = g_object_get_data (object_entry, "entryPeso6");
+    GtkEntry *data_entryPeso7 = g_object_get_data (object_entry, "entryPeso7");
+    GtkEntry *data_entryPeso8 = g_object_get_data (object_entry, "entryPeso8");
+    GtkEntry *data_entryPeso9 = g_object_get_data (object_entry, "entryPeso9");
+
+
+
+    double q[9];
+    double pesos[9];
+    //double q1 = atof(gtk_entry_get_text(data_entry1));
+    ////////////////////////ERRO ESTÁ AQUI
+    q[0] = 1;//atof(gtk_entry_get_text(data_entry1));
+    q[1] = 1;//atof(gtk_entry_get_text(data_entry2));
+    q[2] = 1;//atof(gtk_entry_get_text(data_entry3));
+    q[3] = 1;//atof(gtk_entry_get_text(data_entry4));
+    q[4] = 1;//atof(gtk_entry_get_text(data_entry5));
+    q[5] = 1;//atof(gtk_entry_get_text(data_entry6));
+    q[6] = 1;//atof(gtk_entry_get_text(data_entry7));
+    q[7] = 1;//atof(gtk_entry_get_text(data_entry8));
+    q[8] = 1;//atof(gtk_entry_get_text(data_entry9));
+    pesos[0] = 1;//atof(gtk_entry_get_text(data_entryPeso1));
+    pesos[1] = 1;//atof(gtk_entry_get_text(data_entryPeso2));
+    pesos[2] = 1;//atof(gtk_entry_get_text(data_entryPeso3));
+    pesos[3] = 1;//atof(gtk_entry_get_text(data_entryPeso4));
+    pesos[4] = 1;//atof(gtk_entry_get_text(data_entryPeso5));
+    pesos[5] = 1;//atof(gtk_entry_get_text(data_entryPeso6));
+    pesos[6] = 1;//atof(gtk_entry_get_text(data_entryPeso7));
+    pesos[7] = 1;//atof(gtk_entry_get_text(data_entryPeso8));
+    pesos[8] = 1;//atof(gtk_entry_get_text(data_entryPeso9));
+
+    
+    
+    /*
+    FILE *fp;
+    fp = fopen("save.txt","w");
+    if(fp == NULL)
+    {
+        printf("Error: Não foi possível salvar os valores de entrada.");
+        return;
+    }
+
+    fwrite(q,sizeof(double),9,fp);
+    fwrite(pesos,sizeof(double),9,fp); 
+    
+    fclose(fp);
+    */
+    printf("Salvamento completo!\n");
+}
+
+void entry_load(GtkButton *buttonSave, GObject *object_entry){
+
+
+    //char *str = g_strdup_printf("%.5lf", q[0]);
+    GtkEntry *data_entry1 = g_object_get_data (object_entry, "entry1");
+    GtkEntry *data_entry2 = g_object_get_data (object_entry, "entry2");
+    GtkEntry *data_entry3 = g_object_get_data (object_entry, "entry3");
+    GtkEntry *data_entry4 = g_object_get_data (object_entry, "entry4");
+    GtkEntry *data_entry5 = g_object_get_data (object_entry, "entry5");
+    GtkEntry *data_entry6 = g_object_get_data (object_entry, "entry6");
+    GtkEntry *data_entry7 = g_object_get_data (object_entry, "entry7");
+    GtkEntry *data_entry8 = g_object_get_data (object_entry, "entry8");
+    GtkEntry *data_entry9 = g_object_get_data (object_entry, "entry9");
+    GtkEntry *data_entryPeso1 = g_object_get_data (object_entry, "entryPeso1");
+    GtkEntry *data_entryPeso2 = g_object_get_data (object_entry, "entryPeso2");
+    GtkEntry *data_entryPeso3 = g_object_get_data (object_entry, "entryPeso3");
+    GtkEntry *data_entryPeso4 = g_object_get_data (object_entry, "entryPeso4");
+    GtkEntry *data_entryPeso5 = g_object_get_data (object_entry, "entryPeso5");
+    GtkEntry *data_entryPeso6 = g_object_get_data (object_entry, "entryPeso6");
+    GtkEntry *data_entryPeso7 = g_object_get_data (object_entry, "entryPeso7");
+    GtkEntry *data_entryPeso8 = g_object_get_data (object_entry, "entryPeso8");
+    GtkEntry *data_entryPeso9 = g_object_get_data (object_entry, "entryPeso9");
+
+    double q[9];
+    double pesos[9];
+    
+    FILE *fp;
+    fp = fopen("save.txt","r");
+    if(fp == NULL)
+    {
+        printf("Error: Não foi possível carregar os valores de entrada.");
+        return;
+    }
+
+    fread(q,sizeof(double),9,fp);
+    fread(pesos,sizeof(double),9,fp); 
+
+    fclose(fp);
+
+
+    gtk_entry_set_text(GTK_ENTRY(data_entry1), g_strdup_printf("%.5lf", q[0]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry2), g_strdup_printf("%.5lf", q[1]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry3), g_strdup_printf("%.5lf", q[2]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry4), g_strdup_printf("%.5lf", q[3]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry5), g_strdup_printf("%.5lf", q[4]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry6), g_strdup_printf("%.5lf", q[5]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry7), g_strdup_printf("%.5lf", q[6]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry8), g_strdup_printf("%.5lf", q[7]));
+    gtk_entry_set_text(GTK_ENTRY(data_entry9), g_strdup_printf("%.5lf", q[8]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso1), g_strdup_printf("%.5lf", pesos[0]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso2), g_strdup_printf("%.5lf", pesos[1]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso3), g_strdup_printf("%.5lf", pesos[2]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso4), g_strdup_printf("%.5lf", pesos[3]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso5), g_strdup_printf("%.5lf", pesos[4]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso6), g_strdup_printf("%.5lf", pesos[5]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), g_strdup_printf("%.5lf", pesos[6]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), g_strdup_printf("%.5lf", pesos[7]));
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), g_strdup_printf("%.5lf", pesos[8]));
+
+    printf("Carregamento completo!\n");
+
+    
+}
 
 void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     GtkEntry *data_entry1 = g_object_get_data (object_entry, "entry1");
@@ -22,6 +153,7 @@ void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     GtkEntry *data_entryPeso8 = g_object_get_data (object_entry, "entryPeso8");
     GtkEntry *data_entryPeso9 = g_object_get_data (object_entry, "entryPeso9");
 
+    
     gtk_entry_set_text(GTK_ENTRY(data_entry1), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry2), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry3), "");
@@ -31,15 +163,15 @@ void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     gtk_entry_set_text(GTK_ENTRY(data_entry7), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry8), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry9), "");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso1), "0,15");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso2), "0,12");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso3), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso4), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso5), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso6), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), "0,08");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), "0,17");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), "0,08");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso1), "0.15");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso2), "0.12");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso3), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso4), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso5), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso6), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), "0.08");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), "0.17");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), "0.08");
 }
 
 void btn_click (GtkButton *button, GObject *object_entry) {
@@ -83,6 +215,7 @@ void btn_click (GtkButton *button, GObject *object_entry) {
     double peso8 = atof(gtk_entry_get_text(data_entryPeso8));
     double peso9 = atof(gtk_entry_get_text(data_entryPeso9));
 
+
     double result = iqa(q1, q2, q3, q4, q5, q6, q7, q9, q8, peso1, peso2, peso3, peso4, peso5, peso6, peso7, peso8, peso9);
     printf("%.15lf\n", result);
 
@@ -118,7 +251,7 @@ int main(int argc, char *argv[])
     GtkWidget *grid;
     GtkWidget *label1, *label2, *label3, *label4, *label5, *label6, *label7, *label8, *label9, *labelPeso1, *labelPeso2, *labelPeso3, *labelPeso4, *labelPeso5, *labelPeso6, *labelPeso7, *labelPeso8, *labelPeso9, *spcLabel, *resultLabel, *qLabel;
     GtkWidget *entry1, *entry2, *entry3, *entry4, *entry5, *entry6, *entry7, *entry8, *entry9, *entryPeso1, *entryPeso2, *entryPeso3, *entryPeso4, *entryPeso5, *entryPeso6, *entryPeso7, *entryPeso8, *entryPeso9;
-    GtkWidget *button, *buttonReset;
+    GtkWidget *button, *buttonReset, *buttonSave, *buttonLoad;
 
     GObject *object_entry;
 
@@ -168,15 +301,15 @@ int main(int argc, char *argv[])
     entryPeso7 = gtk_entry_new();
     entryPeso8 = gtk_entry_new();
     entryPeso9 = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(entryPeso1), "0,15");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso2), "0,12");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso3), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso4), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso5), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso6), "0,10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso7), "0,08");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso8), "0,17");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso9), "0,08");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso1), "0.15");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso2), "0.12");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso3), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso4), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso5), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso6), "0.10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso7), "0.08");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso8), "0.17");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso9), "0.08");
 
     //Button
     button = gtk_button_new_with_mnemonic("_Calcular");
@@ -223,6 +356,54 @@ int main(int argc, char *argv[])
     g_object_set_data(G_OBJECT(buttonReset), "entryPeso9", entryPeso9);
     g_signal_connect(GTK_BUTTON(buttonReset), "clicked", G_CALLBACK(entry_reset), buttonReset);
 
+    //Button Save
+    buttonSave = gtk_button_new_with_mnemonic("_Save");
+    
+    g_object_set_data(G_OBJECT(buttonSave), "entry1", entry1);
+    g_object_set_data(G_OBJECT(buttonSave), "entry2", entry2);
+    g_object_set_data(G_OBJECT(buttonSave), "entry3", entry3);
+    g_object_set_data(G_OBJECT(buttonSave), "entry4", entry4);
+    g_object_set_data(G_OBJECT(buttonSave), "entry5", entry5);
+    g_object_set_data(G_OBJECT(buttonSave), "entry6", entry6);
+    g_object_set_data(G_OBJECT(buttonSave), "entry7", entry7);
+    g_object_set_data(G_OBJECT(buttonSave), "entry8", entry8);
+    g_object_set_data(G_OBJECT(buttonSave), "entry9", entry9);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso1", entryPeso1);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso2", entryPeso2);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso3", entryPeso3);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso4", entryPeso4);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso5", entryPeso5);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso6", entryPeso6);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso7", entryPeso7);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso8", entryPeso8);
+    g_object_set_data(G_OBJECT(buttonSave), "entryPeso9", entryPeso9);
+    
+    g_signal_connect(GTK_BUTTON(buttonSave), "clicked", G_CALLBACK(entry_save), window);
+
+
+
+    //Button Load
+    buttonLoad = gtk_button_new_with_mnemonic("_Load");
+    g_object_set_data(G_OBJECT(buttonLoad), "entry1", entry1);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry2", entry2);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry3", entry3);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry4", entry4);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry5", entry5);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry6", entry6);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry7", entry7);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry8", entry8);
+    g_object_set_data(G_OBJECT(buttonLoad), "entry9", entry9);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso1", entryPeso1);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso2", entryPeso2);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso3", entryPeso3);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso4", entryPeso4);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso5", entryPeso5);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso6", entryPeso6);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso7", entryPeso7);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso8", entryPeso8);
+    g_object_set_data(G_OBJECT(buttonLoad), "entryPeso9", entryPeso9);
+    g_signal_connect(GTK_BUTTON(buttonLoad), "clicked", G_CALLBACK(entry_load), buttonLoad);
+
     //Grid
     grid = gtk_grid_new();
     gtk_grid_set_column_spacing(GTK_GRID(grid), 20);
@@ -264,9 +445,11 @@ int main(int argc, char *argv[])
     gtk_grid_attach(GTK_GRID(grid), entryPeso7, 4, 6, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), entryPeso8, 4, 7, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), entryPeso9, 4, 8, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), button, 4, 9, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), buttonReset, 2, 9, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), resultLabel, 2, 10, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), buttonSave, 2, 10, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), buttonLoad, 2, 9, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 4, 10, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), buttonReset, 4, 9, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), resultLabel, 2, 11, 1, 1);
 
     gtk_container_add(GTK_CONTAINER(window), grid);
     gtk_widget_show_all(window);
