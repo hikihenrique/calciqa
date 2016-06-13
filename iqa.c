@@ -3,6 +3,57 @@
 #include <stdio.h>
 #include "novo.h"
 
+static void
+on_response (GtkDialog *dialog,
+             gint       response_id,
+             gpointer   user_data)
+{
+  /*For demonstration purposes, this will show the int value 
+  of the response type*/
+  // g_print ("response is %d\n", response_id);
+  g_print ("Arquivo salvo!\n");
+  /*This will cause the dialog to be destroyed*/
+  gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
+static void
+show_dialog (GtkButton *button,
+             gpointer   user_data)
+{
+  GtkWindow *window = user_data;
+  GtkWidget *dialog, cancel;
+  GtkWidget *content_area;
+  GtkWidget *label;
+
+  gint response_id;
+
+  /*Create the dialog window. Modal windows prevent interaction with other 
+  windows in the same application*/
+  dialog = gtk_dialog_new_with_buttons ("File saved", 
+                                        window, 
+                                        GTK_DIALOG_MODAL, 
+                                        "_OK", 
+                                        GTK_RESPONSE_OK, 
+                                        NULL);
+    
+
+  /*Create a label and attach it to the content area of the dialog*/
+  content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+  label = gtk_label_new ("Seu arquivo foi salvo com sucesso!");
+  gtk_container_add (GTK_CONTAINER (content_area), label);
+
+  /*The main purpose of this is to show dialog's child widget, label*/
+  gtk_widget_show_all (dialog);
+  
+  /*Connecting the "response" signal from the user to the associated
+  callback function*/
+  g_signal_connect (GTK_DIALOG (dialog), 
+                    "response", 
+                    G_CALLBACK (on_response), 
+                    NULL);
+
+}
+
 void saveData(GtkButton *buttonSave, GObject *object_entry) {
 
     GtkEntry *data_entry1 = g_object_get_data (object_entry, "entry1");
@@ -162,6 +213,10 @@ void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), "0.08");
     gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), "0.17");
     gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), "0.08");
+
+    printf("Resentando...\n");
+    printf("Reset completo!\n");
+
 }
 
 
@@ -207,30 +262,36 @@ void btn_click (GtkButton *button, GObject *object_entry) {
     double peso8 = atof(gtk_entry_get_text(data_entryPeso8));
     double peso9 = atof(gtk_entry_get_text(data_entryPeso9));
 
+    printf("Calculando...\n");
     double result = iqa(q1, q2, q3, q4, q5, q6, q7, q9, q8, peso1, peso2, peso3, peso4, peso5, peso6, peso7, peso8, peso9);
-    printf("%.15lf\n", result);
-
+    printf("\nCalculo completo:\a\n");    
+    
 
     if(result <= 100 && result > 90) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Excelente \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
+        printf("IQA: %.5lf\nNível de Qualidade: Excelente \n", result);
     } else if(result <= 90 && result > 70) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Bom \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
+        printf("IQA: %.5lf\nNível de Qualidade: Bom \n", result);
     } else if(result <= 70 && result > 50) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Médio \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
+        printf("IQA: %.5lf\nNível de Qualidade: Médio \n", result);
     } else if(result <= 50 && result > 25) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Ruim \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
+        printf("IQA: %.5lf\nNível de Qualidade: Ruim \n", result);
     } else if(result <= 25 && result >= 0) {
         char *str = g_strdup_printf("IQA: %.5lf\nNível de Qualidade: Muito Ruim \n", result);
         gtk_label_set_text(GTK_LABEL(result_iqa), str);
         g_free(str);
+        printf("IQA: %.5lf\nNível de Qualidade: Muito Ruim \n", result);
     }
 }
 
@@ -368,6 +429,8 @@ int main(int argc, char *argv[])
     g_object_set_data(G_OBJECT(buttonSave), "entryPeso8", entryPeso8);
     g_object_set_data(G_OBJECT(buttonSave), "entryPeso9", entryPeso9);
     g_signal_connect(GTK_BUTTON(buttonSave), "clicked", G_CALLBACK(saveData), buttonSave);
+    g_signal_connect(GTK_BUTTON(buttonSave), "clicked", G_CALLBACK(show_dialog), window);
+
 
     //Load Button
     //Button Load
