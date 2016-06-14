@@ -204,15 +204,15 @@ void entry_reset(GtkButton *buttonReset, GObject *object_entry){
     gtk_entry_set_text(GTK_ENTRY(data_entry7), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry8), "");
     gtk_entry_set_text(GTK_ENTRY(data_entry9), "");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso1), "0.15");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso2), "0.12");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso3), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso4), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso5), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso6), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), "0.08");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), "0.17");
-    gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), "0.08");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso1), "0,15");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso2), "0,12");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso3), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso4), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso5), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso6), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso7), "0,08");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso8), "0,17");
+    gtk_entry_set_text(GTK_ENTRY(data_entryPeso9), "0,08");
 
     printf("Resentando...\n");
     printf("Reset completo!\n");
@@ -353,15 +353,15 @@ int main(int argc, char *argv[])
     entryPeso7 = gtk_entry_new();
     entryPeso8 = gtk_entry_new();
     entryPeso9 = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(entryPeso1), "0.15");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso2), "0.12");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso3), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso4), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso5), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso6), "0.10");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso7), "0.08");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso8), "0.17");
-    gtk_entry_set_text(GTK_ENTRY(entryPeso9), "0.08");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso1), "0,15");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso2), "0,12");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso3), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso4), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso5), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso6), "0,10");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso7), "0,08");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso8), "0,17");
+    gtk_entry_set_text(GTK_ENTRY(entryPeso9), "0,08");
 
     //Button
     button = gtk_button_new_with_mnemonic("_Calcular");
